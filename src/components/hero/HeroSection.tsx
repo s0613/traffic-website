@@ -30,11 +30,12 @@ const HeroSection: React.FC = () => {
 
     const abortControllerRef = useRef<AbortController | null>(null);
     const autoRequestIntervalRef = useRef<NodeJS.Timeout | null>(null); // 자동 요청 인터벌 참조
+    const BASE_URL = "http://134.195.158.7:8000"; // 기본 URL 설정
 
     useEffect(() => {
         const fetchWebsites = async () => {
             try {
-                const response = await fetch("http://127.0.0.1:8000/api/sites/");
+                const response = await fetch(`${BASE_URL}/api/sites/`); // BASE_URL 사용
                 if (!response.ok) {
                     throw new Error(`Failed to fetch websites: ${response.statusText}`);
                 }
@@ -102,7 +103,7 @@ const HeroSection: React.FC = () => {
                 current_time: currentTimeISO,
             });
 
-            const response = await fetch("http://127.0.0.1:8000/api/best_entry_time/", {
+            const response = await fetch(`${BASE_URL}/api/best_entry_time/`, { // BASE_URL 사용
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

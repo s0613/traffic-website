@@ -1,21 +1,32 @@
-# 베이스 이미지로 Node.js 사용
-FROM node:18-alpine
+# Base image for Node.js
+FROM node:18.16.0 AS builder
 
-# 작업 디렉토리 설정
-WORKDIR /app
+# Set working directory
+WORKDIR /usr/src/app
 
-# 의존성 파일 복사 및 설치
-COPY package.json package-lock.json ./
-RUN npm install
+# Copy package.json and package-lock.json (if exists)
+COPY package*.json ./
 
-# 소스 코드 복사
+# Install dependencies
+RUN npm install --legacy-peer-deps
+
+# Copy application source code
 COPY . .
 
-# 빌드 실행
+# Build the application
 RUN npm run build
 
-# 포트 노출
+# Use a smaller image for production
+FROM node:18.16.0
+
+# Set working directory
+WORKDIR /usr/src/app
+
+# Copy built application and dependencies
+COPY --from=builder /usr/src/app .
+
+# Expose the port the app runs on
 EXPOSE 3000
 
-# 앱 실행
+# Start the application
 CMD ["npm", "start"]
