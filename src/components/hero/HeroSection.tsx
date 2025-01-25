@@ -30,7 +30,7 @@ const HeroSection: React.FC = () => {
 
     const abortControllerRef = useRef<AbortController | null>(null);
     const autoRequestIntervalRef = useRef<NodeJS.Timeout | null>(null); // 자동 요청 인터벌 참조
-    const BASE_URL = "http://134.195.158.7:8000"; // 기본 URL 설정
+    const BASE_URL = "http://134.195.158.8:8000"; // 기본 URL 설정
 
     useEffect(() => {
         const fetchWebsites = async () => {

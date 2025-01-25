@@ -14,7 +14,7 @@ const Add: React.FC<AddProps> = ({ addUrl }) => {
         e.preventDefault();
 
         try {
-            const response = await fetch("http://127.0.0.1:8000/api/add_url/", {
+            const response = await fetch("http://134.195.158.8:8000/api/add_url/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

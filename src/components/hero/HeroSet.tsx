@@ -85,7 +85,7 @@ export function useHeroSet() {
     useEffect(() => {
         const fetchWebsites = async () => {
             try {
-                const response = await fetch("http://127.0.0.1:8000/api/sites/");
+                const response = await fetch("http://134.195.158.8:8000/api/sites/");
                 if (!response.ok) {
                     throw new Error(`Failed to fetch websites: ${response.statusText}`);
                 }
@@ -155,7 +155,7 @@ export function useHeroSet() {
                 current_time: currentTimeISO,
             });
 
-            const response = await fetch("http://127.0.0.1:8000/api/best_entry_time/", {
+            const response = await fetch("http://134.195.158.8:8000/api/best_entry_time/", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

@@ -11,7 +11,7 @@ const Login = () => {
         e.preventDefault();
         // 로그인 로직을 여기에 추가합니다.
         // 예를 들어, API 요청을 보내고 성공하면 홈 페이지로 리디렉션합니다.
-        const response = await fetch('http://localhost:8000/api/login/', {
+        const response = await fetch('http://134.195.158.8:8000/api/login/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
